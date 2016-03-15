@@ -176,7 +176,8 @@ public class SimpleRenderer implements Renderer {
 		Matrix.multiplyMM(vp, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 		
 		Matrix.setIdentityM(mInnerCube.mModelMatrix, 0);
-	    Matrix.setRotateM(mInnerCube.mModelMatrix, 0, (float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), quat[1], quat[2], quat[3]);
+
+		Matrix.setRotateM(mInnerCube.mModelMatrix, 0, (float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), quat[3], quat[2], quat[1]);
 //		Matrix.setRotateM(mInnerCube.mModelMatrix, 0, (float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), 1.0F, 1.0F, 1.0f);
 //		Matrix.setRotateM(mInnerCube.mModelMatrix, 0,
 //				(float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), quat[1], quat[2], quat[3]);

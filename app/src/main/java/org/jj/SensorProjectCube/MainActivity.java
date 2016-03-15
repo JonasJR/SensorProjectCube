@@ -8,6 +8,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -62,7 +63,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         setContentView(mLayout);
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
     }
 
     /*
@@ -86,8 +87,8 @@ public class MainActivity extends Activity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         float[] quat = new float[4];
-        SensorManager.getQuaternionFromVector(quat, event.values);
-        mRenderer.quat = quat;
+        //SensorManager.getQuaternionFromVector(quat, event.values);
+        mRenderer.quat = event.values;
     }
 
     @Override
