@@ -122,7 +122,7 @@ public class CubeBuffers {
 			0F, -1.0F, 0F,
 	};
 	
-	private float[] mCubeColors = { 
+	private float[] mCubeColors = {
 			1.0F, 0.0F, 0.0F, 1.0F, // RED
 			1.0F, 0.0F, 0.0F, 1.0F,
 			1.0F, 0.0F, 0.0F, 1.0F,
@@ -265,7 +265,7 @@ public class CubeBuffers {
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, mBuffers.get(1));
 		GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, bufferColors.capacity() * 4,
 				bufferColors, GLES20.GL_STATIC_DRAW);
-		
+
 		// load the normals
 		GLES20.glBindBuffer(GLES20.GL_ARRAY_BUFFER, mBuffers.get(2));
 		GLES20.glBufferData(GLES20.GL_ARRAY_BUFFER, bufferNormals.capacity() * 4,
@@ -279,8 +279,14 @@ public class CubeBuffers {
 		// TEXTURES
 		
 		// Retrieve a Bitmap containing our texture
-		Bitmap bm = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
-		
+		Bitmap bm1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.nature1);
+		Bitmap bm2 = BitmapFactory.decodeResource(context.getResources(), R.drawable.nature2);
+		Bitmap bm3 = BitmapFactory.decodeResource(context.getResources(), R.drawable.nature3);
+		Bitmap bm4 = BitmapFactory.decodeResource(context.getResources(), R.drawable.nature4);
+		Bitmap bm5 = BitmapFactory.decodeResource(context.getResources(), R.drawable.nature5);
+		Bitmap bm6 = BitmapFactory.decodeResource(context.getResources(), R.drawable.nature6);
+
+
 		// Generates one texture buffer and binds to it
 		GLES20.glGenTextures(1, mTextures);
 		// After binding all texture calls will effect the texture found at mTextures.get(0)
@@ -290,27 +296,27 @@ public class CubeBuffers {
 		// If the texture was in a Buffer (i.e ByteBuffer) then GLES20.glTexImage2D could be used
 		
 		// Load the cube face - Positive X
-		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GLES20.GL_RGBA, bm,
+		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GLES20.GL_RGBA, bm1,
 				GLES20.GL_UNSIGNED_BYTE, 0);
 
 		// Load the cube face - Negative X
-		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_NEGATIVE_X,  0, GLES20.GL_RGBA, bm,
+		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_NEGATIVE_X,  0, GLES20.GL_RGBA, bm2,
 				GLES20.GL_UNSIGNED_BYTE, 0);
 
 		// Load the cube face - Positive Y
-		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GLES20.GL_RGBA, bm,
+		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GLES20.GL_RGBA, bm3,
 				GLES20.GL_UNSIGNED_BYTE, 0);
 
 		// Load the cube face - Negative Y
-		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GLES20.GL_RGBA, bm,
+		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GLES20.GL_RGBA, bm4,
 				GLES20.GL_UNSIGNED_BYTE, 0);
 
 		// Load the cube face - Positive Z
-		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GLES20.GL_RGBA, bm,
+		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GLES20.GL_RGBA, bm5,
 				GLES20.GL_UNSIGNED_BYTE, 0);
 
 		// Load the cube face - Negative Z
-		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GLES20.GL_RGBA, bm,
+		GLUtils.texImage2D(GLES20.GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GLES20.GL_RGBA, bm6,
 				GLES20.GL_UNSIGNED_BYTE, 0);
 		
 		// Generate a mipmap for the 6 sides so 6 mipmaps
@@ -332,7 +338,12 @@ public class CubeBuffers {
 		
 		// the pixel data is saved by GLUtils.texImage2D so this is safe
 		// http://androidxref.com/source/xref/frameworks/base/core/jni/android/opengl/util.cpp#util_texImage2D for the curious
-		bm.recycle();
+		bm1.recycle();
+		bm2.recycle();
+		bm3.recycle();
+		bm4.recycle();
+		bm5.recycle();
+		bm6.recycle();
 		
 		// Now everything needed is in video ram.
 		// At this point all that is really needed are the buffers index stored in mBuffers and mTextures,
