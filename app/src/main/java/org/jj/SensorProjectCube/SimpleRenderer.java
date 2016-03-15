@@ -32,6 +32,8 @@ public class SimpleRenderer implements Renderer {
 	public static interface FpsListener {
 		public void setFps(final int d);
 	}
+
+	public float
 	
 	private Context mContext;
 	

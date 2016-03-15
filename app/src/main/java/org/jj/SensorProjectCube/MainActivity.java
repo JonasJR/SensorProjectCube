@@ -1,7 +1,12 @@
 package org.jj.SensorProjectCube;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.opengl.GLSurfaceView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,9 +14,9 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity implements SensorEventListener {
 
-    private static final String TAG = "CubeMapActivity";
+    private static final String TAG = "MainActivity";
     private FrameLayout mLayout;
     private GLSurfaceView mSurfaceView;
     private SimpleRenderer mRenderer;
@@ -69,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mSurfaceView.onResume();
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        float[] quat = new float[4];
+        SensorManager.getQuaternionFromVector(quat, event.values);
+        mRenderer.quat = quat;
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 
 
