@@ -63,7 +63,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         setContentView(mLayout);
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GAME_ROTATION_VECTOR);
+        mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
     }
 
     /*
@@ -87,8 +87,12 @@ public class MainActivity extends Activity implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         float[] quat = new float[4];
-        //SensorManager.getQuaternionFromVector(quat, event.values);
-        mRenderer.quat = event.values;
+        SensorManager.getQuaternionFromVector(quat, event.values);
+        mRenderer.quat = quat;
+    }
+
+    private float convertTo360(float angle180) {
+        return (angle180 + 360.0f) % 360.0f;
     }
 
     @Override
