@@ -21,6 +21,8 @@ public class MainActivity extends Activity implements SensorEventListener {
     private GLSurfaceView mSurfaceView;
     private SimpleRenderer mRenderer;
     private TextView mFpsView;
+    private SensorManager mSensorManager;
+    private Sensor mRotationSensor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,9 @@ public class MainActivity extends Activity implements SensorEventListener {
                 | Gravity.END));
 
         setContentView(mLayout);
+
+        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+        mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
     }
 
     /*
@@ -66,6 +71,7 @@ public class MainActivity extends Activity implements SensorEventListener {
      */
     @Override
     protected void onPause() {
+        mSensorManager.unregisterListener(this);
         super.onPause();
         mSurfaceView.onPause();
     }
@@ -74,6 +80,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     protected void onResume() {
         super.onResume();
         mSurfaceView.onResume();
+        mSensorManager.registerListener(this, mRotationSensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override

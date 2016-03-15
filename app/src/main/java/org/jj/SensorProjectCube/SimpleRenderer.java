@@ -170,33 +170,25 @@ public class SimpleRenderer implements Renderer {
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT
 			| GLES20.GL_DEPTH_BUFFER_BIT);
 
-		long now = System.currentTimeMillis();
-		
-		// startTime and elapsedTime set the start of the animation at 0 rather
-		// than using System.currentTimeMillis() directly.
-		if(startTime > 0)
-			elapsedTime = now - startTime;
-		else 
-			startTime = now;
 		
 		Matrix.setLookAtM(mViewMatrix, 0, -1.0f, 1.75f, 1.5f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 		Matrix.multiplyMM(vp, 0, mProjectionMatrix, 0, mViewMatrix, 0);
-
-		// complete rotation every 4 seconds
-		final float angle = 0.09F * (float) (elapsedTime % 4000L);
 		
 		Matrix.setIdentityM(mInnerCube.mModelMatrix, 0);
-	    Matrix.setRotateM(mInnerCube.mModelMatrix, 0, angle, 1.0F, 1.0F, 1.0f);
-		
+	    Matrix.setRotateM(mInnerCube.mModelMatrix, 0, (float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), quat[1], quat[2], quat[3]);
+//		Matrix.setRotateM(mInnerCube.mModelMatrix, 0, (float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), 1.0F, 1.0F, 1.0f);
+//		Matrix.setRotateM(mInnerCube.mModelMatrix, 0,
+//				(float) ((2.5f * Math.acos(quat[0]) * 180.0f) / Math.PI), quat[1], quat[2], quat[3]);
+//
 	    mInnerCube.draw(vp);
-	    
-	    Matrix.setIdentityM(mOuterCube.mModelMatrix, 0);
-	    // reverse rotation sense
-	    Matrix.setRotateM(mOuterCube.mModelMatrix, 0, -angle, 0F, 1.0F, 0f);
-	    // set the outer cube to be 4 times bigger so it can contains the inner cube
-	    Matrix.scaleM(mOuterCube.mModelMatrix, 0, 4f, 4f, 4f);
-	    
-	    mOuterCube.draw(vp);
+//
+//	    Matrix.setIdentityM(mOuterCube.mModelMatrix, 0);
+//	    // reverse rotation sense
+//	    Matrix.setRotateM(mOuterCube.mModelMatrix, 0, -angle, 0F, 1.0F, 0f);
+//	    // set the outer cube to be 4 times bigger so it can contains the inner cube
+//	    Matrix.scaleM(mOuterCube.mModelMatrix, 0, 4f, 4f, 4f);
+//
+//	    mOuterCube.draw(vp);
 
         
 	}
