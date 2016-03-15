@@ -33,7 +33,7 @@ public class SimpleRenderer implements Renderer {
 		public void setFps(final int d);
 	}
 
-	public float
+	public float[] quat = {1, 0, 0, 0};
 	
 	private Context mContext;
 	
