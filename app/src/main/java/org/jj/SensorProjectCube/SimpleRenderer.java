@@ -168,10 +168,11 @@ public class SimpleRenderer implements Renderer {
 	public void onDrawFrame(GL10 gl) {
 		// clear the color and depth buffer since both of them are used
 		GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT
-			| GLES20.GL_DEPTH_BUFFER_BIT);
+				| GLES20.GL_DEPTH_BUFFER_BIT);
 
 		
-		Matrix.setLookAtM(mViewMatrix, 0, -1.0f, 1.75f, 1.5f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+		//Matrix.setLookAtM(mViewMatrix, 0, -1.0f, 1.75f, 1.5f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+		Matrix.setLookAtM(mViewMatrix, 0, 0f, 0f, 3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 		Matrix.multiplyMM(vp, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 		
 		Matrix.setIdentityM(mInnerCube.mModelMatrix, 0);
