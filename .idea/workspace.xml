@@ -73,12 +73,17 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/org/jj/SensorProjectCube/SimpleRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0">
               <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
 =======
             <state vertical-scroll-proportion="0.35209423">
               <caret line="164" column="30" selection-start-line="164" selection-start-column="30" selection-end-line="164" selection-end-column="30" />
 >>>>>>> f41af5301f00353d39cc5318edff86c62f56db74
+=======
+            <state vertical-scroll-proportion="0.5484293">
+              <caret line="174" column="71" selection-start-line="174" selection-start-column="71" selection-end-line="174" selection-end-column="71" />
+>>>>>>> acb25514eb7cb86f0a2e3490043fce46d33b92b5
               <folding />
             </state>
           </provider>
@@ -2053,6 +2058,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/org/jj/SensorProjectCube/SimpleRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -2099,6 +2105,10 @@
         <state vertical-scroll-proportion="0.35209423">
           <caret line="164" column="30" selection-start-line="164" selection-start-column="30" selection-end-line="164" selection-end-column="30" />
 >>>>>>> f41af5301f00353d39cc5318edff86c62f56db74
+=======
+        <state vertical-scroll-proportion="0.5484293">
+          <caret line="174" column="71" selection-start-line="174" selection-start-column="71" selection-end-line="174" selection-end-column="71" />
+>>>>>>> acb25514eb7cb86f0a2e3490043fce46d33b92b5
           <folding />
         </state>
       </provider>
