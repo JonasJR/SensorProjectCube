@@ -24,6 +24,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     private TextView mFpsView;
     private SensorManager mSensorManager;
     private Sensor mRotationSensor;
+    private Sensor mProximitySensor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mRotationSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+        mProximitySensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
     }
 
     /*
@@ -82,17 +84,18 @@ public class MainActivity extends Activity implements SensorEventListener {
         super.onResume();
         mSurfaceView.onResume();
         mSensorManager.registerListener(this, mRotationSensor, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, mProximitySensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float[] quat = new float[4];
-        SensorManager.getQuaternionFromVector(quat, event.values);
-        mRenderer.quat = quat;
-    }
-
-    private float convertTo360(float angle180) {
-        return (angle180 + 360.0f) % 360.0f;
+        if(event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
+            float[] quat = new float[4];
+            SensorManager.getQuaternionFromVector(quat, event.values);
+            mRenderer.quat = quat;
+        } else if(event.sensor.getType() == Sensor.TYPE_PROXIMITY ){
+            mRenderer.proximityZoom = event.values[0];
+        }
     }
 
     @Override

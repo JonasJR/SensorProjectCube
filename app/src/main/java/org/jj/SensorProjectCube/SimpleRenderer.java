@@ -22,6 +22,7 @@ import android.content.Context;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import android.opengl.GLSurfaceView.Renderer;
+import android.util.Log;
 
 /**
  * SimpleRenderer implements the OpenGL renderer.
@@ -34,6 +35,8 @@ public class SimpleRenderer implements Renderer {
 	}
 
 	public float[] quat = {1, 0, 0, 0};
+	public float proximityZoom;
+	float distance = 3.0f;
 	
 	private Context mContext;
 	
@@ -173,7 +176,17 @@ public class SimpleRenderer implements Renderer {
 
 		
 		//Matrix.setLookAtM(mViewMatrix, 0, -1.0f, 1.75f, 1.5f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
-		Matrix.setLookAtM(mViewMatrix, 0, 0f, 0f, 3, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
+
+		if(proximityZoom == 5.0){
+			if(distance < 7.0f){
+				distance += 0.1f;
+			}
+		} else {
+			if(distance>=3.0f){
+				distance -= 0.1f;
+			}
+		}
+		Matrix.setLookAtM(mViewMatrix, 0, 0f, 0f, distance, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
 		Matrix.multiplyMM(vp, 0, mProjectionMatrix, 0, mViewMatrix, 0);
 		
 		//Matrix.setIdentityM(mInnerCube.mModelMatrix, 0);
