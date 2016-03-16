@@ -33,11 +33,11 @@ public class Cube {
 		mVertexShaderSrc = vertexShader;
 		mFragmentShaderSrc = fragmentShader;
 
-		mVertexShaderHandle = GLESUtil.loadShader(GLES20.GL_VERTEX_SHADER, mVertexShaderSrc);
+		mVertexShaderHandle = Utils.loadShader(GLES20.GL_VERTEX_SHADER, mVertexShaderSrc);
 
-		mFragmentShaderHandle = GLESUtil.loadShader(GLES20.GL_FRAGMENT_SHADER, mFragmentShaderSrc);
+		mFragmentShaderHandle = Utils.loadShader(GLES20.GL_FRAGMENT_SHADER, mFragmentShaderSrc);
 
-		mProgramHandle = GLESUtil.createProgram(mVertexShaderHandle, mFragmentShaderHandle);
+		mProgramHandle = Utils.createProgram(mVertexShaderHandle, mFragmentShaderHandle);
 		
 		Matrix.setIdentityM(mModelMatrix,0);
 		Matrix.setIdentityM(mMVPMatrix,0);

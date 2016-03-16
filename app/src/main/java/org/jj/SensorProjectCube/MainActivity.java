@@ -14,7 +14,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     private FrameLayout mLayout;
     private GLSurfaceView mSurfaceView;
-    private SimpleRenderer mRenderer;
+    private MyRenderer mRenderer;
     private SensorManager mSensorManager;
     private Sensor mRotationSensor;
     private Sensor mProximitySensor;
@@ -32,7 +32,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         mLayout.setLayoutParams(params);
 
         mSurfaceView = new MyGLSurfaceView(this);
-        mRenderer = new SimpleRenderer(this);
+        mRenderer = new MyRenderer(this);
 
         mSurfaceView.setRenderer(mRenderer);
 
@@ -88,5 +88,4 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
 
     }
-
 }

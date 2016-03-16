@@ -305,5 +305,4 @@ public class CubeBuffers {
 		bm5.recycle();
 		bm6.recycle();
 	}
-	
 }
